@@ -94,7 +94,7 @@ Execute o script utilizando a seguinte sintaxe:
 
 ## Autor
 - **Jhonata Santana Ferreira**
-- Contato: [jhonataovirowa@gamil.com]
+- Contato: [jhonataovirowa@gmail.com]
 
 ---
 
