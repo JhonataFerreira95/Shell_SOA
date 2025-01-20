@@ -48,3 +48,5 @@ while IFS=',' read -r NOME SENHA; do
     # Incrementar o contador
     COUNTER=$((COUNTER + 1))
 done < "$USUARIOS"
+
+echo "Processo concluído."
