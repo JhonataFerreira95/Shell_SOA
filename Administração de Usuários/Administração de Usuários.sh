@@ -28,7 +28,7 @@ COUNTER=0
 echo "Criando usuários..."
 while IFS=',' read -r NOME SENHA; do
     # Pular cabeçalho, se existir
-    if [[ "$NOME" == "nome" ]]; then
+    if [ "$NOME" == "nome" ]; then
         continue
     fi
 
