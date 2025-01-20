@@ -20,3 +20,31 @@ for GRUPO in "${GRUPOS[@]}"; do
         echo "Grupo $GRUPO já existe."
     fi
 done
+
+# Contador para alocar usuários nos grupos
+COUNTER=0
+
+# Ler o arquivo CSV e criar usuários
+echo "Criando usuários..."
+while IFS=',' read -r NOME SENHA; do
+    # Pular cabeçalho, se existir
+    if [[ "$NOME" == "nome" ]]; then
+        continue
+    fi
+
+    # Determinar o grupo com base no contador
+    GRUPO_INDEX=$((COUNTER / 10))
+    GRUPO=${GRUPOS[GRUPO_INDEX]}
+
+    # Criar o usuário
+    if ! id "$NOME" > /dev/null 2>&1; then
+        useradd -m -d "$HOME_BASE/$NOME" -G "$GRUPO" -s "$SHELL_PADRAO" "$NOME"
+        echo "$NOME:$SENHA" | chpasswd
+        echo "Usuário $NOME criado e adicionado ao grupo $GRUPO."
+    else
+        echo "Usuário $NOME já existe."
+    fi
+
+    # Incrementar o contador
+    COUNTER=$((COUNTER + 1))
+done < "$USUARIOS"
