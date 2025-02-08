@@ -22,6 +22,7 @@ for GRUPO in "${GRUPOS[@]}"; do
 done
 
 # Contador para alocar usuários nos grupos
+
 COUNTER=0
 
 # Ler o arquivo CSV e criar usuários
